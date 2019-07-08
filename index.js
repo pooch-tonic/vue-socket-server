@@ -19,10 +19,10 @@ socket.on('connection', socket => {
       
       if (progress >= 100) {
         progress = 100
-        socket.emit('message', '[' + new Date().toTimeString().slice(0, 8) + '] Operation in progress... 100%')
+        socket.emit('op-message', '[' + new Date().toTimeString().slice(0, 8) + '] Operation in progress... 100%')
         socket.emit('finalize-operation')
       }
-      socket.emit('message', '[' + new Date().toTimeString().slice(0, 8) + '] Operation in progress... ' + progress.toString().padStart(3, ' ') + '%')
+      socket.emit('op-message', '[' + new Date().toTimeString().slice(0, 8) + '] Operation in progress... ' + progress.toString().padStart(3, ' ') + '%')
     }, 500)
 
     socket.on('end-operation', () => {
